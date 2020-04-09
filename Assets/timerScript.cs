@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class timerScript : MonoBehaviour
 {
@@ -24,12 +25,12 @@ public class timerScript : MonoBehaviour
     {
     	while(counter > 0)
     	{
-    		timer.text = counter.ToString();
-    		counter--;
+    		
     		yield return new WaitForSeconds(1);
+    		counter--;
+    		timer.text = counter.ToString();
     	}
-    	
-    	timer.text = "Game Over";
-    
+
+    	SceneManager.LoadScene("GameOver");
     }
 }
