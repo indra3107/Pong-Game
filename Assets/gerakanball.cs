@@ -10,6 +10,7 @@ public class gerakanball : MonoBehaviour
 
     public Rigidbody2D ball;
     public Animator FireBall;
+    public GameObject MasterScript;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class gerakanball : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other){
     	if(other.collider.name=="wall kanan" || other.collider.name=="wall kiri"){
+    		MasterScript.GetComponent<ScoringScript>().UpdateScore(other.collider.name);
     		StartCoroutine(interval());
     	}
     }
