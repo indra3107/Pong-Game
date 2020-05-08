@@ -11,6 +11,7 @@ public class gerakanball : MonoBehaviour
     public Rigidbody2D ball;
     public Animator FireBall;
     public GameObject MasterScript;
+    public AudioSource Effect;
 
     void Start()
     {
@@ -33,6 +34,10 @@ public class gerakanball : MonoBehaviour
     		MasterScript.GetComponent<ScoringScript>().UpdateScore(other.collider.name);
     		StartCoroutine(interval());
     	}
+        if(other.collider.tag == "Player")
+        {
+            Effect.Play();
+        }
     }
 
     IEnumerator interval(){
